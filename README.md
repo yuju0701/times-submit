@@ -1,1 +1,2 @@
-![screencapture-yuju-times-netlify-app-2024-07-09-15_04_47](https://github.com/yuju0701/times-submit/assets/163105974/80ec838a-7ef0-4247-adb6-2f723fcbf9c3)
+![스크린샷_9-7-2024_152258_127 0 0 1](https://github.com/yuju0701/times-submit/assets/163105974/11805d5d-ead7-41c4-bcaa-1e5125d2618b)
+
