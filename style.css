@@ -1,3 +1,6 @@
+body {
+    background-color: antiquewhite;
+}
 .head-line-section {
     display: flex;
     flex-direction: column;
@@ -116,16 +119,16 @@
   }
 
   .search-button {
-    background-color: rgb(86, 123, 149);
-    border: 1px solid rgb(50, 104, 145);
+    background-color: burlywood;
+    border: 1px solid rgb(255, 255, 255);
     color: rgb(255, 255, 255);
     height: 33px;
-    border-radius: 3px;
+    border-radius: 10px;
   }
 
   #search-input {
     border: 1px solid rgb(226, 226, 226);
-    border-radius: 3px;
+    border-radius: 10px;
     height: 33px;
   }
   
