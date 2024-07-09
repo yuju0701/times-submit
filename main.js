@@ -43,6 +43,7 @@ const getNews = async () => {
     renderPagination();
   }
 };
+
 const getLatestNews = () => {
   page = 1;
   url = new URL(
@@ -92,25 +93,13 @@ const render = () => {
       return `<div class="news row">
         <div class="col-lg-4">
             <img class="news-img"
-                src="${
-                  news.urlToImage ||
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU"
-                }" />
+                src="${news.urlToImage}" 
+                onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU'; this.onerror=null;" />
         </div>
         <div class="col-lg-8">
-            <a class="title" target="_blank" href="${news.url}">${
-        news.title
-      }</a>
-            <p>${
-              news.description == null || news.description == ""
-                ? "내용없음"
-                : news.description.length > 200
-                ? news.description.substring(0, 200) + "..."
-                : news.description
-            }</p>
-            <div>${news.source.name || "no source"}  ${moment(
-        news.publishedAt
-      ).fromNow()}</div>
+            <a class="title" target="_blank" href="${news.url}">${news.title}</a>
+            <p>${news.description == null || news.description == "" ? "내용없음" : news.description.length > 200 ? news.description.substring(0, 200) + "..." : news.description}</p>
+            <div>${news.source.name || "no source"}  ${moment(news.publishedAt).fromNow()}</div>
         </div>
     </div>`;
     })
