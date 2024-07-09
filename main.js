@@ -4,7 +4,7 @@ let page = 1;
 let totalPage = 1;
 const PAGE_SIZE = 10;
 let url = new URL(
-  `https://yuju-times.netlify.app//top-headlines`
+  `https://yuju-times.netlify.app//top-headlines?country=kr&pageSize=${PAGE_SIZE}`
 );
 let menus = document.querySelectorAll("#menu-list button");
 menus.forEach((menu) =>
@@ -46,7 +46,7 @@ const getNews = async () => {
 const getLatestNews = () => {
   page = 1;
   url = new URL(
-    `https://yuju-times.netlify.app//top-headlines=${PAGE_SIZE}`
+    `https://yuju-times.netlify.app//top-headlines?country=kr&pageSize=${PAGE_SIZE}`
   );
   getNews();
 };
@@ -56,7 +56,7 @@ const getNewsByTopic = (event) => {
 
   page = 1;
   url = new URL(
-    `https://yuju-times.netlify.app//top-headlines=${PAGE_SIZE}&category=${topic}`
+    `https://yuju-times.netlify.app//top-headlines?country=kr&pageSize=${PAGE_SIZE}&category=${topic}`
   );
   getNews();
 };
