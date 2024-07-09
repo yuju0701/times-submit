@@ -4,7 +4,7 @@ let page = 1;
 let totalPage = 1;
 const PAGE_SIZE = 10;
 let url = new URL(
-  `https://yuju-times.netlify.app//top-headlines?country=kr&pageSize=${PAGE_SIZE}`
+  `https://yuju-times.netlify.app/top-headlines?country=kr&pageSize=${PAGE_SIZE}`
 );
 let menus = document.querySelectorAll("#menu-list button");
 menus.forEach((menu) =>
@@ -18,7 +18,7 @@ const getNews = async () => {
     let response = await fetch(url);
     let data = await response.json();
     if (response.status == 200) {
-      console.log("resutl", data);
+      console.log("result", data);
       if (data.totalResults == 0) {
         page = 0;
         totalPage = 0;
@@ -46,7 +46,7 @@ const getNews = async () => {
 const getLatestNews = () => {
   page = 1;
   url = new URL(
-    `https://yuju-times.netlify.app//top-headlines?country=kr&pageSize=${PAGE_SIZE}`
+    `https://yuju-times.netlify.app/top-headlines?country=kr&pageSize=${PAGE_SIZE}`
   );
   getNews();
 };
@@ -56,7 +56,7 @@ const getNewsByTopic = (event) => {
 
   page = 1;
   url = new URL(
-    `https://yuju-times.netlify.app//top-headlines?country=kr&pageSize=${PAGE_SIZE}&category=${topic}`
+    `https://yuju-times.netlify.app/top-headlines?country=kr&pageSize=${PAGE_SIZE}&category=${topic}`
   );
   getNews();
 };
@@ -75,10 +75,16 @@ const getNewsByKeyword = () => {
 
   page = 1;
   url = new URL(
-    `https://yuju-times.netlify.app//top-headlines=${keyword}&country=kr&pageSize=${PAGE_SIZE}`
+    `https://yuju-times.netlify.app/top-headlines?country=kr&pageSize=${PAGE_SIZE}&q=${keyword}`
   );
   getNews();
 };
+
+document.getElementById("search-input").addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    getNewsByKeyword();
+  }
+});
 
 const render = () => {
   let resultHTML = articles
@@ -112,6 +118,7 @@ const render = () => {
 
   document.getElementById("news-board").innerHTML = resultHTML;
 };
+
 const renderPagination = () => {
   let paginationHTML = ``;
   let pageGroup = Math.ceil(page / 5);
@@ -151,6 +158,7 @@ const pageClick = (pageNum) => {
   window.scrollTo({ top: 0, behavior: "smooth" });
   getNews();
 };
+
 const errorRender = (message) => {
   document.getElementById(
     "news-board"
@@ -164,4 +172,5 @@ const openNav = () => {
 const closeNav = () => {
   document.getElementById("mySidenav").style.width = "0";
 };
+
 getLatestNews();
